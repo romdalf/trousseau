@@ -18,12 +18,12 @@ concurrency:
 
 jobs:
   call-golangci-lint:
-    uses: ./.github/workflows/_gocilint.yml@main
+    uses: ./.github/workflows/_gocilint.yml
   
   call-gosec-scanning:
-    uses: ./.github/workflows/_gosecscan.yml@main
+    uses: ./.github/workflows/_gosecscan.yml
     needs: call-golangci-lint
     
   call-docker-build:
-    uses: ./.github/workflows/_docker-build.yml@main
+    uses: ./.github/workflows/_docker-build.yml
     needs: call-gosec-scanning
