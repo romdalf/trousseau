@@ -1,0 +1,16 @@
+name: deploy to k8s
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: azure/k8s-set-context@v2 
+        with: 
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBECONFIG }}
+      - name: Run a one-line script
+        run: kubectl get nodes
+
